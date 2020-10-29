@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Nimish Shah',
     description:
-      'Nimish Shah is a software engineer specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.',
+      'Nimish Shah is an engineer specializing in the streams of robotics, mechatronics and computer vision.',
     siteUrl: 'https://shahns.github.io/', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@nimishsshah',
