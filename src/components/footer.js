@@ -109,7 +109,7 @@ const Footer = () => {
           <div>Theme by Brittany Chiang</div>
 
           {githubInfo.stars && githubInfo.forks && (
-            <div className="github-stats">
+            <div className="github-stats" style="display: none;">
               <span>
                 <Icon name="Star" />
                 <span>{githubInfo.stars.toLocaleString()}</span>
