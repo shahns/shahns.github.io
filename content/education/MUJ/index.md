@@ -1,6 +1,6 @@
 ---
 date: '2013-08-15'
-title: 'Bachelor of Technology in Mechatronics Engineering'
+title: 'Bachelor of Technology - Mechatronics Engineering'
 company: 'Manipal University Jaipur'
 location: 'Jaipur, India'
 range: '2013 - 2017'
