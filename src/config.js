@@ -25,10 +25,10 @@ module.exports = {
       name: 'Experience',
       url: '/#jobs',
     },
-    // {
-    //   name: 'Work',
-    //   url: '/#projects',
-    // },
+    {
+      name: 'Skills',
+      url: '/#skills',
+    },
     {
       name: 'Education',
       url: '/#education',

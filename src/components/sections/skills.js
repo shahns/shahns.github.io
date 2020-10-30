@@ -6,13 +6,13 @@ import { srConfig } from '@config';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 
-const StyledEducationSection = styled.section`
-  max-width: 700px;
+const StyledSkillsSection = styled.section`
+  max-width: 900px;
 
   .inner {
     display: flex;
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       display: block;
     }
   }
@@ -153,21 +153,18 @@ const StyledTabContent = styled.div`
   }
 `;
 
-const Education = () => {
+const Skills = () => {
   const data = useStaticQuery(graphql`
     query {
-      education: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/education/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+      skills: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/skills/" } }
+        sort: { fields: [frontmatter___order], order: ASC }
       ) {
         edges {
           node {
             frontmatter {
               title
-              company
-              location
-              range
-              url
+              skill_type
             }
             html
           }
@@ -176,7 +173,7 @@ const Education = () => {
     }
   `);
 
-  const educationData = data.education.edges;
+  const skillsData = data.skills.edges;
 
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
@@ -219,14 +216,14 @@ const Education = () => {
   };
 
   return (
-    <StyledEducationSection id="education" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Studied</h2>
+    <StyledSkillsSection id="skills" ref={revealContainer}>
+      <h2 className="numbered-heading">Skills I've</h2>
 
       <div className="inner">
-        <StyledTabList role="tablist" aria-label="Education tabs" onKeyDown={onKeyDown}>
-          {educationData &&
-            educationData.map(({ node }, i) => {
-              const { company } = node.frontmatter;
+        <StyledTabList role="tablist" aria-label="Skills tabs" onKeyDown={onKeyDown}>
+          {skillsData &&
+            skillsData.map(({ node }, i) => {
+              const { title } = node.frontmatter;
               return (
                 <li key={i}>
                   <StyledTabButton
@@ -238,7 +235,7 @@ const Education = () => {
                     aria-selected={activeTabId === i ? true : false}
                     aria-controls={`panel-${i}`}
                     tabIndex={activeTabId === i ? '0' : '-1'}>
-                    <span>{company}</span>
+                    <span>{title}</span>
                   </StyledTabButton>
                 </li>
               );
@@ -246,10 +243,10 @@ const Education = () => {
           <StyledHighlight activeTabId={activeTabId} />
         </StyledTabList>
 
-        {educationData &&
-          educationData.map(({ node }, i) => {
+        {skillsData &&
+          skillsData.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { title, url, company, range, location } = frontmatter;
+            const { title } = frontmatter;
 
             return (
               <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
@@ -262,26 +259,15 @@ const Education = () => {
                   hidden={activeTabId !== i}>
                   <h3>
                     <span>{title}</span>
-                    <span className="company">
-                      &nbsp;@&nbsp;
-                      <a href={url} className="inline-link">
-                        {company}
-                      </a>
-                    </span>
                   </h3>
-
-                  <p className="range">
-                    {range} | {location}
-                  </p>
-
                   <div dangerouslySetInnerHTML={{ __html: html }} />
                 </StyledTabContent>
               </CSSTransition>
             );
           })}
       </div>
-    </StyledEducationSection>
+    </StyledSkillsSection>
   );
 };
 
-export default Education;
+export default Skills;
