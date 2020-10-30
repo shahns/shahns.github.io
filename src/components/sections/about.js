@@ -132,7 +132,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'HTML & (S)CSS', 'React', 'Vue', 'Node.js', 'WordPress'];
+  // const skills = ['JavaScript (ES6+)', 'HTML & (S)CSS', 'React', 'Vue', 'Node.js', 'WordPress'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -144,22 +144,26 @@ const About = () => {
             <p>Hello! I'm Nimish, a Robotics Engineer based in Enschede, the Netherlands.</p>
 
             <p>
-              I enjoy creating things that live on the internet, whether that be websites,
-              applications, or anything in between. My goal is to always build products that provide
-              pixel-perfect, performant experiences.
+              I am perusing Master of Science (MSc) in Electrical Engineering with Robotics and
+              Mechatronics as a specialization at the{' '}
+              <a href="https://www.utwente.nl">University Twente</a>. currently, I am working on my
+              master thesis titled{' '}
+              <a href="https://www.ram.eemcs.utwente.nl/education/assignments/3d-stereovision-quantification-skin-diseases">
+                3D Stereovision for Quantification of Skin Diseases
+              </a>{' '}
+              under the supervision of{' '}
+              <a href="https://people.utwente.nl/f.vanderheijden">dr.ir. Ferdi van der Heijden</a>{' '}
+              in the <a href="https://www.ram.eemcs.utwente.nl/">Robotics and Mechatronics</a>{' '}
+              research group.
             </p>
 
             <p>
-              Shortly after graduating from{' '}
-              <a href="https://www.ccis.northeastern.edu">Northeastern University</a>, I joined the
-              engineering team at <a href="https://www.upstatement.com">Upstatement</a> where I work
-              on a wide variety of interesting and meaningful projects on a daily basis.
+              I am passionate about Computers and interfacing them to simplify daily life by means
+              of Electronics and Mechanics. My research interests include robotics, control theory,
+              filtering techniques, visual odometry, simultaneous localization and mapping (SLAM),
+              computer vision, 3D reconstruction, machine intelligence and machine learning.
             </p>
-
-            <p>Here are a few technologies I've been working with recently:</p>
           </div>
-
-         
         </StyledText>
 
         <StyledPic>

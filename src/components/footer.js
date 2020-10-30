@@ -74,7 +74,7 @@ const Footer = () => {
   });
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'xxx') {
       return;
     }
     fetch('https://api.github.com/repos/bchiang7/v4')
