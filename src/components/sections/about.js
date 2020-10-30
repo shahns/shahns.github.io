@@ -146,7 +146,7 @@ const About = () => {
             <p>
               I am perusing Master of Science (MSc) in Electrical Engineering with Robotics and
               Mechatronics as a specialization at the{' '}
-              <a href="https://www.utwente.nl">University Twente</a>. currently, I am working on my
+              <a href="https://www.utwente.nl">University Twente</a>. Currently, I am working on my
               master thesis titled{' '}
               <a href="https://www.ram.eemcs.utwente.nl/education/assignments/3d-stereovision-quantification-skin-diseases">
                 3D Stereovision for Quantification of Skin Diseases
