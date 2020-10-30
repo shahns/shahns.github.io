@@ -8,7 +8,7 @@ module.exports = {
     siteUrl: 'https://shahns.github.io/', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@nimishsshah',
-    pathPrefix: "/site",
+    pathPrefix: '/site',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'BrittanyChiang',
-        short_name: 'BrittanyChiang',
+        name: 'Nimish Shah',
+        short_name: 'Nimish Shah',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
