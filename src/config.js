@@ -22,6 +22,10 @@ module.exports = {
       url: '/#about',
     },
     {
+      name: 'Education',
+      url: '/#education',
+    },
+    {
       name: 'Experience',
       url: '/#jobs',
     },
@@ -30,8 +34,8 @@ module.exports = {
       url: '/#skills',
     },
     {
-      name: 'Education',
-      url: '/#education',
+      name: 'Projects',
+      url: '/#projects',
     },
     {
       name: 'Contact',

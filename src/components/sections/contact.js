@@ -52,8 +52,7 @@ const Contact = () => {
 
       <p>
         Although I'm currently looking for new opportunities and my inbox is always open. Whether
-        you have an opportunity, question or just want to say hi, I'll try my best to get back to
-        you!
+        you have an opportunity, question or just want to say hi, and I'll get back to you!
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
