@@ -7,7 +7,7 @@ tech:
   - MATLAB
   - Python
 company: 'Manipal University Jaipur'
-tag: 'Robotics | Bio-inspired Path Planning'
+tag: 'Robotics | Path Planning'
 showInProjects: true
 ---
 

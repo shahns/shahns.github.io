@@ -1,6 +1,6 @@
 ---
 date: '1'
-title: 'ES-EKF Filter Visual SLAM'
+title: 'ES-EKF Visual SLAM'
 cover: './part26.png'
 github: ''
 external: 'https://www.ram.eemcs.utwente.nl/about-us/events/3d-stereovision-quantification-skin-diseases'
