@@ -186,7 +186,9 @@ const Projects = () => {
       {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
         view the archive
       </Link> */}
-
+      <a href="/project_arch" className="inline-link archive-link">
+        view the archive
+      </a>
       <TransitionGroup className="projects-grid">
         {projectsToShow &&
           projectsToShow.map(({ node }, i) => {

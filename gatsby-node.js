@@ -15,7 +15,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       postsRemark: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/posts/" } }
+        filter: { fileAbsolutePath: { regex: "/project_arch/" } }
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
       ) {
@@ -42,9 +42,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   // Create post detail pages
-  const posts = result.data.postsRemark.edges;
+  const project_arch = result.data.postsRemark.edges;
 
-  posts.forEach(({ node }) => {
+  project_arch.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.slug,
       component: postTemplate,
@@ -57,7 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Make tag pages
   tags.forEach(tag => {
     createPage({
-      path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/project_arch/tags/${_.kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,

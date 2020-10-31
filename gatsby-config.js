@@ -47,8 +47,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
-        path: `${__dirname}/content/posts`,
+        name: `project_arch`,
+        path: `${__dirname}/content/project_arch`,
       },
     },
     {
@@ -152,7 +152,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-27973304',
+        trackingId: 'G-L8SGE172B7',
+        head: true,
       },
     },
   ],

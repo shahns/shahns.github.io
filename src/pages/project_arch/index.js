@@ -117,18 +117,18 @@ const StyledTags = styled.ul`
   }
 `;
 
-const BlogPage = ({ location, data }) => {
+const PensievePage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
-      <Helmet title="Blog" />
+      <Helmet title="Project Archive" />
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Blog</h1>
+          <h1 className="big-heading">Project Archive</h1>
           {/* <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/blog">
+            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
               a collection of memories
             </a>
           </p> */}
@@ -161,7 +161,9 @@ const BlogPage = ({ location, data }) => {
                         <StyledTags>
                           {tags.map((tag, i) => (
                             <li key={i}>
-                              <Link to={`/blog/tags/${kebabCase(tag)}/`} className="inline-link">
+                              <Link
+                                to={`/project_arch/tags/${kebabCase(tag)}/`}
+                                className="inline-link">
                                 #{tag}
                               </Link>
                             </li>
@@ -179,17 +181,20 @@ const BlogPage = ({ location, data }) => {
   );
 };
 
-BlogPage.propTypes = {
+PensievePage.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default BlogPage;
+export default PensievePage;
 
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/posts/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/project_arch/" }
+        frontmatter: { draft: { ne: true } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
