@@ -44,7 +44,7 @@ const PostTemplate = ({ data, location }) => {
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
-          <Link to="/project_arch">All projects</Link>
+          <Link to="/#projects">All projects</Link>
         </span>
 
         <StyledPostHeader>
@@ -61,7 +61,7 @@ const PostTemplate = ({ data, location }) => {
             {tags &&
               tags.length > 0 &&
               tags.map((tag, i) => (
-                <Link key={i} to={`/project_arch/tags/${kebabCase(tag)}/`} className="tag">
+                <Link key={i} to={`/projects/tags/${kebabCase(tag)}/`} className="tag">
                   #{tag}
                 </Link>
               ))}

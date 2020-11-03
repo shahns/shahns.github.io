@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
+import kebabCase from 'lodash/kebabCase';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -154,7 +155,7 @@ const Projects = () => {
               tech
               github
               external
-              tag
+              tags
             }
             html
           }
@@ -163,6 +164,25 @@ const Projects = () => {
     }
   `);
 
+  const StyledTags = styled.ul`
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: var(--fz-xxs);
+      line-height: 1.75;
+
+      &:not(:last-of-type) {
+        margin-right: 15px;
+      }
+    }
+  `;
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -186,14 +206,11 @@ const Projects = () => {
       {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
         view the archive
       </Link> */}
-      <a href="/project_arch" className="inline-link archive-link">
-        view the archive
-      </a>
       <TransitionGroup className="projects-grid">
         {projectsToShow &&
           projectsToShow.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { github, external, title, tech, tag } = frontmatter;
+            const { github, external, title, tech, tags } = frontmatter;
 
             return (
               <CSSTransition
@@ -211,9 +228,9 @@ const Projects = () => {
                   <div className="project-inner">
                     <header>
                       <div className="project-top">
-                        <div className="folder">
+                        {/* <div className="folder">
                           <Icon name="Folder" />
-                        </div>
+                        </div> */}
                         <div className="project-links">
                           {github && (
                             <a href={github} aria-label="GitHub Link">
@@ -244,7 +261,15 @@ const Projects = () => {
                         </ul>
                       )}
                     </footer>
-                    <p className="project-underline">{tag}</p>
+                    <StyledTags>
+                      {tags.map((tag, i) => (
+                        <li key={i}>
+                          <Link to={`/projects/tags/${kebabCase(tag)}/`} className="inline-link">
+                            #{tag}
+                          </Link>
+                        </li>
+                      ))}
+                    </StyledTags>
                   </div>
                 </StyledProject>
               </CSSTransition>

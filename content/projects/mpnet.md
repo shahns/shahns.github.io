@@ -1,14 +1,19 @@
 ---
 date: '3'
 title: 'Developing adptive offline robot programming based on 3D sensing'
-cover: './g12.png'
+slug: '/projects/mpnet'
+cover: 'images/g12.png'
 github: ''
 external: ''
 tech:
   - Python
   - TensorFlow
-tag: 'Motion Planning | Deep Learining'
-showInProjects: true
+tags:
+  - Motion Planning
+  - Deep Learining
+showInProjects: false
+isFeatured: true
+draft: false
 ---
 
 In this project, MPNet—a motion planning network, the technique employed by [Qureshi et al.](https://arxiv.org/abs/1806.05767)

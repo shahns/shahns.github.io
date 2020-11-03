@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
-
+import kebabCase from 'lodash/kebabCase';
+// import { Link } from 'gatsby';
 const StyledProject = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -25,6 +26,19 @@ const StyledProject = styled.div`
   }
 
   &:nth-of-type(odd) {
+    .project-tags {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      justify-content: right;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xxs);
+      line-height: 1.75;
+    }
+
     .project-content {
       grid-column: 7 / -1;
       text-align: right;
@@ -63,6 +77,18 @@ const StyledProject = styled.div`
         grid-column: 1 / -1;
       }
     }
+  }
+  .project-tags {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    justify-content: left;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
+    line-height: 1.75;
   }
 
   .project-content {
@@ -235,11 +261,35 @@ const StyledProject = styled.div`
   }
 `;
 
+// const StyledTags = styled.ul`
+// display: flex;
+// align-items: flex-end;
+// flex-wrap: wrap;
+// padding: 0;
+// margin: 0;
+// list-style: none;
+// justify-content: flex-end;
+// li {
+//   color: var(--red);
+//   font-family: var(--font-mono);
+//   font-size: var(--fz-xxs);
+//   line-height: 1.75;
+
+//   &:not(:last-of-type) {
+//     margin-right: 15px;
+//   }
+// }
+
+// `;
+
 const Featured = () => {
   const data = useStaticQuery(graphql`
     query {
       featured: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/featured/" } }
+        filter: {
+          fileAbsolutePath: { regex: "/projects/" }
+          frontmatter: { isFeatured: { ne: false } }
+        }
         sort: { fields: [frontmatter___date], order: ASC }
       ) {
         edges {
@@ -256,7 +306,7 @@ const Featured = () => {
               tech
               github
               external
-              tag
+              tags
             }
             html
           }
@@ -283,12 +333,21 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, tag } = frontmatter;
+            const { external, title, tech, github, cover, tags } = frontmatter;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
-                  <p className="project-overline">{tag}</p>
+                  <div className="project-tags">
+                    {tags.map(tag => (
+                      <Link
+                        key={i}
+                        to={`/projects/tags/${kebabCase(tag)}/`}
+                        className="inline-link">
+                        #{tag}&nbsp;
+                      </Link>
+                    ))}
+                  </div>
                   <h3 className="project-title">{title}</h3>
                   <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
                   {tech.length && (
@@ -312,7 +371,6 @@ const Featured = () => {
                     )}
                   </div>
                 </div>
-
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
                     <Img fluid={cover.childImageSharp.fluid} alt={title} className="img" />

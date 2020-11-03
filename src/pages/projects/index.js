@@ -162,7 +162,7 @@ const PensievePage = ({ location, data }) => {
                           {tags.map((tag, i) => (
                             <li key={i}>
                               <Link
-                                to={`/project_arch/tags/${kebabCase(tag)}/`}
+                                to={`/projects/tags/${kebabCase(tag)}/`}
                                 className="inline-link">
                                 #{tag}
                               </Link>
@@ -191,10 +191,7 @@ export default PensievePage;
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/project_arch/" }
-        frontmatter: { draft: { ne: true } }
-      }
+      filter: { fileAbsolutePath: { regex: "/projects/" }, frontmatter: { draft: { ne: true } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
